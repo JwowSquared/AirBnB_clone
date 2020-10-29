@@ -1,1 +1,1 @@
-# AirBnB_clone
+This repo contains files related to the air bnb clone
