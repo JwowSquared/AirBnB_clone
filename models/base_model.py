@@ -5,6 +5,7 @@ module for base class
 import uuid
 from datetime import datetime
 from models.__init__ import storage
+dts = "%Y-%m-%dT%H:%M:%S.%f"
 
 
 class BaseModel:
@@ -17,9 +18,9 @@ class BaseModel:
                 if key != "__class__":
                     setattr(self, key, value)
             if hasattr(self, "created_at") and type(self.created_at) is str:
-                self.created_at = datetime.strptime(kwargs["created_at"], "%Y-%m-%dT%H:%M:%S.%f")
+                self.created_at = datetime.strptime(kwargs["created_at"], dts)
             if hasattr(self, "updated_at") and type(self.updated_at) is str:
-                self.updated_at = datetime.strptime(kwargs["updated_at"], "%Y-%m-%dT%H:%M:%S.%f")
+                self.updated_at = datetime.strptime(kwargs["updated_at"], dts)
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
@@ -35,7 +36,8 @@ class BaseModel:
 
     def __str__(self):
         """return str format"""
-        return "[{:s}] ({:s}) {}".format(type(self).__name__, self.id, self.__dict__)
+        x = "[{:s}] ({:s}) {}"
+        return x.format(type(self).__name__, self.id, self.__dict__)
 
     def save(self):
         """saves class attrs to dictionary"""
@@ -46,8 +48,8 @@ class BaseModel:
         """ to dictionary function"""
         my_dict = self.__dict__.copy()
         if "created_at" in my_dict:
-            my_dict["created_at"] = my_dict["created_at"].strftime("%Y-%m-%dT%H:%M:%S.%f")
+            my_dict["created_at"] = my_dict["created_at"].strftime(dts)
         if "updated_at" in my_dict:
-            my_dict["updated_at"] = my_dict["updated_at"].strftime("%Y-%m-%dT%H:%M:%S.%f")
+            my_dict["updated_at"] = my_dict["updated_at"].strftime(dts)
         my_dict["__class__"] = type(self).__name__
         return my_dict
