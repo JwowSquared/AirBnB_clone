@@ -4,6 +4,7 @@
 import json
 from os import path
 
+
 class FileStorage():
     """x"""
 
@@ -29,5 +30,3 @@ class FileStorage():
         if path.exists(FileStorage.__file_path):
             with open(FileStorage.__file_path, "r") as f:
                 FileStorage.__objects = json.loads(f.read())
-
-
