@@ -29,7 +29,7 @@ class BaseModel:
 #            models.storage.safe
 
     def __setattr__(self, name, value):
-        """x"""
+        """Overrides any time an attribute is set, updates update time"""
         self.__dict__["updated_at"] = datetime.now()
         self.__dict__[name] = value
         storage.new(self)
