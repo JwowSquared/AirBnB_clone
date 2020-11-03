@@ -4,11 +4,12 @@ module for base class
 """
 import uuid
 from datetime import datetime
+from models.__init__ import storage
+
 
 class BaseModel:
     """Base class for shared attributes"""
 
-    from models.__init__ import storage
     def __init__(self, *args, **kwargs):
         """init class"""
         if kwargs:
@@ -30,6 +31,7 @@ class BaseModel:
         """x"""
         self.__dict__["updated_at"] = datetime.now()
         self.__dict__[name] = value
+        storage.new(self)
 
     def __str__(self):
         """return str format"""
