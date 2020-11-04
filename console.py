@@ -12,6 +12,11 @@ class HBNBCommand(cmd.Cmd):
     __classLib = {
         "BaseModel": BaseModel
         "User": User
+        "State": State
+        "City": City
+        "Amenity": Amenity
+        "Place": Place
+        "Review": Review
     }
 
     def do_help(self, arg):
