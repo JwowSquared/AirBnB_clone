@@ -1,11 +1,11 @@
 #!/usr/bin/python3
-"""Gibberish hahaha"""
+"""There is no way that this matters"""
 import unittest
 from models.base_model import BaseModel
 
 
 class TestBaseModel(unittest.TestCase):
-    """asdjhgskdfwoie;gjwoipg"""
+    """Haha comments go brr"""
     def test_blank(self):
-        """asdasdasdasdasdasdasdasd"""
+        """Noooo you cant just make comments that dont mean anything"""
         self.assertEqual(1, 1)
