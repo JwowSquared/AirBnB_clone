@@ -16,12 +16,12 @@ class HBNBCommand(cmd.Cmd):
     """class implementation of cmd"""
     prompt = "(hbnb) "
     __classLib = {
-        "BaseModel": BaseModel
-        "User": User
-        "State": State
-        "City": City
-        "Amenity": Amenity
-        "Place": Place
+        "BaseModel": BaseModel,
+        "User": User,
+        "State": State,
+        "City": City,
+        "Amenity": Amenity,
+        "Place": Place,
         "Review": Review
     }
 
