@@ -1,11 +1,11 @@
 #!/usr/bin/python3
-"""x"""
+"""Gibberish hahaha"""
 import unittest
 from models.base_model import BaseModel
 
 
 class TestBaseModel(unittest.TestCase):
-    """x"""
+    """asdjhgskdfwoie;gjwoipg"""
     def test_blank(self):
-        """x"""
+        """asdasdasdasdasdasdasdasd"""
         self.assertEqual(1, 1)

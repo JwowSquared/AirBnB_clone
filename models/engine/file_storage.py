@@ -1,27 +1,27 @@
 #!/usr/bin/python3
-"""x"""
+"""This module holds the FileStorage class"""
 
 import json
 from os import path
 
 
 class FileStorage():
-    """x"""
+    """Handles file storage"""
 
     __file_path = "file.json"
     __objects = {}
 
     def all(self):
-        """x"""
+        """returns the objects dictionary"""
         return FileStorage.__objects
 
     def new(self, obj):
-        """x"""
+        """Adds a new entry into the objects dictionary"""
         key = type(obj).__name__ + "." + obj.id
         FileStorage.__objects[key] = obj
 
     def save(self):
-        """x"""
+        """Saves the objects dictionary to file"""
         with open(FileStorage.__file_path, "w") as f:
             out = {}
             for k, v in FileStorage.__objects.items():
@@ -29,7 +29,7 @@ class FileStorage():
             f.write(json.dumps(out))
 
     def reload(self):
-        """x"""
+        """Reloads the objects dictionary from file"""
         from models.base_model import BaseModel
         if path.exists(FileStorage.__file_path):
             with open(FileStorage.__file_path, "r") as f:

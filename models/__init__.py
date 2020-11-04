@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""x"""
+"""On module load, create the storage variable"""
 
 from models.engine.file_storage import FileStorage
 
