@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""x"""
+"""This module handles reading input and the implemented console commands"""
 import cmd
 import sys
 import models
@@ -7,14 +7,14 @@ from models.base_model import BaseModel
 from models import storage
 
 class HBNBCommand(cmd.Cmd):
-    """x"""
+    """class implementation of cmd"""
     prompt = "(hbnb) "
     __classLib = {
         "BaseModel": BaseModel
     }
 
     def do_help(self, arg):
-        """x"""
+        """displays the help command"""
         helpLib = {
             "EOF": "\nEOF HELP\n",
             "help": "\nHELP HELP\n",
@@ -33,7 +33,7 @@ class HBNBCommand(cmd.Cmd):
             print("EOF  help  quit\n")
 
     def do_update(self, arg):
-        """x"""
+        """updates a key in an instance"""
         if arg == "":
             print("** class name missing **")
             return
@@ -66,7 +66,7 @@ class HBNBCommand(cmd.Cmd):
         storage.save()
 
     def do_all(self, arg):
-        """x"""
+        """displays all instances of a class"""
         if arg == "":
             print([str(x) for x in storage.all().values()])
         else:
@@ -77,7 +77,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** class doesn't exist **")
 
     def do_create(self, arg):
-        """x"""
+        """creates a new instance of a class"""
         if arg in HBNBCommand.__classLib.keys():
             x = HBNBCommand.__classLib[arg]()
             storage.save()
@@ -86,9 +86,9 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
         else:
             print("** class doesn't exist **")
- 
+
     def do_destroy(self, arg):
-        """x"""
+        """removes an instance of a class"""
         if arg == "":
             print("** class name missing **")
             return
@@ -110,9 +110,9 @@ class HBNBCommand(cmd.Cmd):
 
         objs.pop(key)
         storage.save()
- 
+
     def do_show(self, arg):
-        """x"""
+        """shows all objects"""
         if arg == "":
             print("** class name missing **")
             return
@@ -133,18 +133,18 @@ class HBNBCommand(cmd.Cmd):
             return
 
         print(objs[key])
-       
+
 
     def do_EOF(self, arg):
-        """x"""
+        """Shows end of file"""
         return True
 
     def do_quit(self, arg):
-        """x"""
+        """quits the console"""
         return True
 
     def emptyline(self):
-        """x"""
+        """returns an empty line"""
         pass
 
 if __name__ == "__main__":
