@@ -1,18 +1,16 @@
 #!/usr/bin/python3
-"""x"""
+"""This module contains the class User"""
 
 from models.base_model import BaseModel
 
 
 class User(BaseModel):
-    """x"""
-    pass
-# guess i misunderstood?
-#    def __init__(self, *args, **kwargs):
-#        """x"""
-#        if not kwargs:
-#            self.email = ""
-#            self.password = ""
-#            self.first_name = ""
-#            self.last_name = ""
-#        super().__init__(*args, **kwargs)
+    """This class contains information based on the user"""
+    email = ""
+    password = ""
+    first_name = ""
+    last_name = ""
+
+    def __init__(self, *args, **kwargs):
+        """initialises class User"""
+        super().__init__(*args, **kwargs)
