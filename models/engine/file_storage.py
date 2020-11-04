@@ -31,9 +31,10 @@ class FileStorage():
     def reload(self):
         """Reloads the objects dictionary from file"""
         from models.base_model import BaseModel
+        from models.user import User
         if path.exists(FileStorage.__file_path):
             with open(FileStorage.__file_path, "r") as f:
                 my_dict = json.loads(f.read())
                 for k, v in my_dict.items():
-                    myClass = eval("BaseModel")
+                    myClass = eval(v["__class__"])
                     FileStorage.__objects[k] = myClass(**v)
