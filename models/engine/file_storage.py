@@ -18,15 +18,22 @@ class FileStorage():
     def new(self, obj):
         """x"""
         key = type(obj).__name__ + "." + obj.id
-        FileStorage.__objects[key] = obj.to_dict()
+        FileStorage.__objects[key] = obj
 
     def save(self):
         """x"""
         with open(FileStorage.__file_path, "w") as f:
-            f.write(json.dumps(FileStorage.__objects))
+            out = {}
+            for k, v in FileStorage.__objects.items():
+                out.update({k: v.to_dict()})
+            f.write(json.dumps(out))
 
     def reload(self):
         """x"""
+        from models.base_model import BaseModel
         if path.exists(FileStorage.__file_path):
             with open(FileStorage.__file_path, "r") as f:
-                FileStorage.__objects = json.loads(f.read())
+                my_dict = json.loads(f.read())
+                for k, v in my_dict.items():
+                    myClass = eval("BaseModel")
+                    FileStorage.__objects[k] = myClass(**v)
