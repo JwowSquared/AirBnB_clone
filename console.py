@@ -11,6 +11,7 @@ class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
     __classLib = {
         "BaseModel": BaseModel
+        "User": User
     }
 
     def do_help(self, arg):
