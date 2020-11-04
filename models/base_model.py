@@ -4,7 +4,7 @@ module for base class
 """
 import uuid
 from datetime import datetime
-from models.__init__ import storage
+from models import storage
 dts = "%Y-%m-%dT%H:%M:%S.%f"
 
 
@@ -32,7 +32,6 @@ class BaseModel:
         """Overrides any time an attribute is set, updates update time"""
         self.__dict__["updated_at"] = datetime.now()
         self.__dict__[name] = value
-        storage.new(self)
 
     def __str__(self):
         """return str format"""
